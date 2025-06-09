@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, replaceVars
+, replaceVars # Changed from substituteAll
 , swaybg
 , meson
 , ninja
@@ -56,7 +56,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./04-dbus-tray
     ./05-remove-config
 
-    (replaceVars {
+    (replaceVars { # Changed from substituteAll
       src = ./fix-paths.patch;
       inherit swaybg;
     })
@@ -140,7 +140,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     description = "An i3-compatible tiling Wayland compositor";
-    longDescription = ''
+    longDescription = '''
       Sway is a tiling Wayland compositor and a drop-in replacement for the i3
       window manager for X11. It works with your existing i3 configuration and
       supports most of i3's features, plus a few extras.
@@ -148,7 +148,7 @@ stdenv.mkDerivation (finalAttrs: {
       than spatially. Windows are arranged into a grid by default which
       maximizes the efficiency of your screen and can be quickly manipulated
       using only the keyboard.
-    '';
+    ''';
     homepage = "https://swaywm.org";
     changelog = "https://github.com/swaywm/sway/releases/tag/${finalAttrs.version}";
     license = lib.licenses.mit;
