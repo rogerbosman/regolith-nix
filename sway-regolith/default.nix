@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, substituteAll
+, replaceVars
 , swaybg
 , meson
 , ninja
@@ -56,7 +56,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./04-dbus-tray
     ./05-remove-config
 
-    (substituteAll {
+    (replaceVars {
       src = ./fix-paths.patch;
       inherit swaybg;
     })
